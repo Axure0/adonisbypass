@@ -1,8 +1,8 @@
 -- CREDITS Mac0014 FOR THE BYPASS
 
 local function Hook_Adonis(meta_defs)
-  for _, tbl in meta_defs do
-    for i, func in tbl do
+  for _, tbl in pairs(meta_defs) do
+    for i, func in pairs(tbl) do
       if type(func) == "function" and islclosure(func) then
         hookfunction(func, function()
           return pcall(coroutine.close, coroutine.running())
