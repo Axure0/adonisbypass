@@ -1,25 +1,9 @@
 -- CREDITS TO A GUY ON V3RM FOR MAKING THIS
 
-local function Hook_Adonis(meta_defs)
-    for _, tbl in pairs(meta_defs) do
-      for i, func in pairs(tbl) do
-        if type(func) == "function" and islclosure(func) then
-          hookfunction(func, function()
-            return pcall(coroutine.close, coroutine.running())
-          end)
-        end
-      end
+for _, value in getgc(true) do 
+    if type(value) == 'table' then
+       if rawget(value, "indexInstance") or rawget(value, "newindexInstance") or rawget(value, “newIndexInstance”) then 
+          value.tvk = { "kick", function() return task.wait(9e9) end } 
+       end
     end
-  end
-    
-local function Init_Bypass()
-  for i, v in getgc(true) do
-    if typeof(v) == "table" and rawget(v, "indexInstance") and rawget(v, "newindexInstance") and rawget(v, "namecallInstance") and type(rawget(v, "newindexInstance")) == "table" then
-      if v["newindexInstance"][1] == "kick" then
-        Hook_Adonis(v)
-      end
-    end
-  end
 end
-    
-Init_Bypass()
