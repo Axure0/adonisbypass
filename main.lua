@@ -1,3 +1,5 @@
+-- CREDITS TO A GUY ON V3RM FOR MAKING THIS
+
 local function Hook_Adonis(meta_defs)
     for _, tbl in pairs(meta_defs) do
       for i, func in pairs(tbl) do
