@@ -1,5 +1,3 @@
--- CREDITS TO A GUY ON V3RM FOR MAKING THIS
-
 for k, v in getgc(true) do
    if pcall(function()
       return rawget(v, "indexInstance")
