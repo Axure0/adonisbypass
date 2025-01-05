@@ -5,11 +5,9 @@ for k, v in getgc(true) do
       for i,c in pairs(v) do
           for ix,ca in pairs(c) do
              if type(ca) == "function" then
-                local dummy = function()
+                hookfunction(ca, function()
                    return pcall(coroutine.close, coroutine.running())
-                end
-
-                hookfunction(ca, dummy)
+                end)
              end
           end
        end
